@@ -9,4 +9,5 @@ metadata:
     app.kubernetes.io/created-by: anynines-hw
   name: dummy-sample
 spec:
+  message: Hello, World!
   # TODO(user): Add fields here
