@@ -28,23 +28,29 @@ type DummySpec struct {
 	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 
+	// Message is the message to echo
 	Message string `json:"message,omitempty"`
 }
 
 // DummyStatus defines the observed state of Dummy
-//type DummyStatus struct {
-// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
-// Important: Run "make" to regenerate code after modifying this file
-//}
+type DummyStatus struct {
+	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
+	// Important: Run "make" to regenerate code after modifying this file
+
+	// SpecEcho is a copy of the message from the spec
+	SpecEcho string `json:"specEcho,omitempty"`
+}
 
 //+kubebuilder:object:root=true
+//+kubebuilder:subresource:status
 
 // Dummy is the Schema for the dummies API
 type Dummy struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 
-	Spec DummySpec `json:"spec,omitempty"`
+	Spec   DummySpec   `json:"spec,omitempty"`
+	Status DummyStatus `json:"status,omitempty"`
 }
 
 //+kubebuilder:object:root=true
